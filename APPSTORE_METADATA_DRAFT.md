@@ -125,9 +125,7 @@ Local DoFirst privacy policy files prepared for deployment:
 - `appstore/privacy-policy.html`
 - `appstore/privacy-policy-zh.html`
 
-These still need to be hosted at a public HTTPS URL before App Store Connect can use them.
-
-Preferred URL if GitHub Pages is enabled for the repo:
+Confirmed GitHub Pages privacy policy URL:
 
 https://tristanlib.github.io/dofirst/appstore/privacy-policy-zh.html
 
@@ -135,7 +133,7 @@ Public GitHub fallback after the repo is pushed:
 
 https://github.com/TristanLib/dofirst/blob/main/appstore/privacy-policy-zh.html
 
-Recommended to use the GitHub Pages URL once it returns HTTP 200.
+Use the GitHub Pages URL in App Store Connect.
 
 ## Recommended App Review Info
 
@@ -153,6 +151,5 @@ To test the core flow, launch the app, complete onboarding, grant Family Control
 
 Before I apply these values in App Store Connect, confirm:
 
-1. Confirm or enable the GitHub Pages privacy policy URL.
-2. Whether automatic release after App Review is OK for the first DoFirst release.
-3. Final confirmation before saving public metadata in App Store Connect.
+1. Whether automatic release after App Review is OK for the first DoFirst release.
+2. Final confirmation before saving public metadata in App Store Connect.

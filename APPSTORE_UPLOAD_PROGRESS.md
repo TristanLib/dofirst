@@ -218,7 +218,8 @@ Local privacy policy pages were prepared under `appstore/`:
 
 Still needed before applying metadata in App Store Connect:
 
-- Confirm or enable the public GitHub Pages privacy policy URL for DoFirst.
+- Use the confirmed public GitHub Pages privacy policy URL:
+  `https://tristanlib.github.io/dofirst/appstore/privacy-policy-zh.html`
 - Use support URL `https://github.com/TristanLib/dofirst/issues` after the repo is pushed.
 - Upload fresh DoFirst screenshots from `appstore/screenshots/iphone-65/`.
 - Confirm before saving public metadata or transmitting review contact information to Apple.
