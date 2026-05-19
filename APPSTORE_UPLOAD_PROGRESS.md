@@ -20,9 +20,33 @@ Do not overwrite or reuse the existing app `人生刻度`.
   - Name: `DoFirst`
   - Apple ID: `6769286854`
   - App Store Connect URL: `https://appstoreconnect.apple.com/apps/6769286854/distribution/ios/version/inflight`
-  - Status observed: `1.0 准备提交`
+  - Status observed before final submission: `1.0 准备提交`
   - Latest uploaded build observed in TestFlight: version `1.0`, build `1`
-  - Current build status observed: `准备提交`
+  - Build status observed before final submission: `准备提交`
+  - Current release status: submitted for App Review by the user on 2026-05-19 after the remaining blockers were fixed.
+
+## App Review Submission Status
+
+On 2026-05-19, the App Store Connect submission was completed.
+
+The user manually clicked `添加以供审核` / submitted the app for review after the following two blocking validation errors were resolved:
+
+- `你必须上传 13 英寸 iPad 显示屏的截屏。`
+- `你必须在定价中选择价格等级。`
+
+Resolution completed on 2026-05-19:
+
+- Pricing was set to free: `$0.00`.
+- 13-inch iPad screenshots were uploaded to the iPad `13 英寸显示屏` slot.
+- App Store Connect showed `5/10 张截屏` for iPad after upload.
+- The local iPad screenshot set was committed and pushed to GitHub:
+  - Commit: `ff077c9 Add iPad app store screenshots`
+
+Current expected next state in App Store Connect:
+
+- The version should now be in App Review / waiting for review / processing review submission.
+- Next manual check should be App Store Connect version status, App Review messages, and email for any reviewer questions.
+- No new binary upload is currently needed unless Apple rejects the build or asks for metadata/binary changes.
 
 ## Bundle ID And Entitlement Changes Already Applied
 
@@ -126,6 +150,48 @@ The main app `Info.plist` also now includes:
 
 This should prevent future uploads from repeatedly requiring the same export compliance answer unless the app's encryption usage changes.
 
+## App Store Metadata Applied
+
+The following App Store Connect metadata/settings were filled and saved before submission:
+
+- App name: `DoFirst`
+- Version: `1.0`
+- Subtitle: `先专注，再解锁娱乐`
+- Primary category: Productivity / `效率`
+- Age rating: `4+`
+- Third-party content rights: no third-party content
+- Privacy policy URL:
+  `https://tristanlib.github.io/dofirst/appstore/privacy-policy-zh.html`
+- Support URL:
+  `https://github.com/TristanLib/dofirst/issues`
+- App Privacy: no data collected, published in App Store Connect
+- Release option: automatic release after App Review
+- Build selected: version `1.0`, build `1`
+- Review login requirement: off
+- Review contact reused from `人生刻度`:
+  - First name: `Bo`
+  - Last name: `Li`
+  - Phone: `+8613578543257`
+  - Email: `wintersday@163.com`
+- Review notes explain Screen Time / FamilyControls usage, local-only storage, no account requirement, and the core test flow.
+
+Screenshots uploaded:
+
+- iPhone 6.5-inch display: 5 screenshots uploaded from `appstore/screenshots/iphone-65/`
+- iPad 13-inch display: 5 screenshots uploaded from `appstore/screenshots/ipad-13/`
+
+The iPad screenshot files are:
+
+```text
+appstore/screenshots/ipad-13/01-onboarding.png
+appstore/screenshots/ipad-13/02-home.png
+appstore/screenshots/ipad-13/03-rules.png
+appstore/screenshots/ipad-13/04-reports.png
+appstore/screenshots/ipad-13/05-settings.png
+```
+
+All iPad screenshots were verified locally as `2064 x 2752`, which matches the App Store Connect 13-inch iPad requirement.
+
 ## Previous Upload Blocker
 
 ```sh
@@ -184,9 +250,10 @@ Do not remove the Family Controls / Screen Time entitlements just to force an up
 
 ## Current Next Steps
 
-1. Complete App Store metadata, screenshots, privacy, accessibility, and review information.
-2. Select the uploaded build `1` for version `1.0`.
-3. Submit the version for App Review when the metadata is complete.
+1. Monitor App Store Connect and email for App Review status or reviewer messages.
+2. If App Review asks about Screen Time / FamilyControls, refer to the review notes and entitlement request context in this file.
+3. If Apple rejects metadata only, update the App Store Connect fields and resubmit without changing the binary.
+4. If Apple rejects the binary, fix the issue in code, increment build number, archive/upload a new build, select it for version `1.0`, and resubmit.
 
 Note: the local app icon asset is present and included in the archive (`CFBundleIconName = AppIcon`, 1024x1024 marketing icon present). App Store Connect's app list still showed a placeholder icon immediately after upload, but TestFlight showed build `1` with the uploaded app icon. The list icon may lag behind processing/cache or require the build to clear compliance metadata.
 
@@ -228,3 +295,23 @@ Fresh screenshots generated from the iPhone 17 simulator:
 
 - Raw simulator screenshots: `appstore/screenshots/raw/`
 - App Store Connect 6.5-inch upload set, resized to 1284 x 2778: `appstore/screenshots/iphone-65/`
+
+Fresh screenshots generated from the iPad Pro 13-inch simulator:
+
+- App Store Connect 13-inch iPad upload set, 2064 x 2752: `appstore/screenshots/ipad-13/`
+
+## GitHub State
+
+Repository:
+
+```text
+https://github.com/TristanLib/dofirst.git
+```
+
+Relevant prior release-prep commits:
+
+```text
+ff077c9 Add iPad app store screenshots
+c1fec63 Confirm DoFirst app store URLs
+6f2e350 Initial DoFirst app store release prep
+```
